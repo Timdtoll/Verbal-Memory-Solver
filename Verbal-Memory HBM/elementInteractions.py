@@ -4,7 +4,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 driver = webdriver.Firefox()
-driver.get("https://humanbenchmark.com/tests/verbal-memory")
+
+def beginDriver():
+    driver.get("https://humanbenchmark.com/tests/verbal-memory")
 
 def getWord():
     word = driver.find_element(By.CLASS_NAME, "word").get_attribute("textContent")
