@@ -3,6 +3,7 @@ import elementInteractions
 import time
 from collections import defaultdict
 
+# Does not work as of now
 def main():
     # Stores the words that have been seen so far
     wordDict = defaultdict(list)
