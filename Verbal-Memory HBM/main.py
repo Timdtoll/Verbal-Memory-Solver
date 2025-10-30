@@ -12,28 +12,34 @@ def main():
     elementInteractions.beginDriver()
     elementInteractions.clickStart()
 
-    # Current test: 100 words
-    for i in range(100):
+    # Current test: 1000 words
+    for i in range(10000):
         currentWord = elementInteractions.getWord()
         seenWordButton = elementInteractions.getSeenWordButton()
         newWordButton = elementInteractions.getNewWordButton()
 
-        # Check if a word with a new starting letter exists in the dictionary. If yes, check if its a new word
+        # Check if a word with a new starting letter exists in the dictionary, add it to dictionary with new key if yes
         if not currentWord[0] in wordDict:
-            print(f"Made inside, current word: %s", currentWord)
             wordDict[currentWord[0]].append(currentWord)
-            time.sleep(1)
             elementInteractions.clickNew(newWordButton)
             
         else:
             for word in wordDict[currentWord[0]]:
+                #If word has been seen before, hit seen button
                 if currentWord == word:
                     elementInteractions.clickSeen(seenWordButton)
                     break
-            wordDict[currentWord[0]].append(currentWord)
-            time.sleep(1)
-            elementInteractions.clickNew(newWordButton)
+                #If word has not been seen before, hit new button and add to dictionary
+                elif word == wordDict[currentWord[0]][-1]:
+                    wordDict[currentWord[0]].append(currentWord)
+                    elementInteractions.clickNew(newWordButton)
+                    break
 
+                
+#Testing
+def printDict(wordDict):
+    for key in wordDict:
+        print(f"{key}: {wordDict[key]}")
 
 if __name__ == "__main__":
     main()

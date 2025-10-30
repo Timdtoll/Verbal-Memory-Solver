@@ -13,11 +13,11 @@ def getWord():
     return word
 
 def getSeenWordButton():
-    seenButton = driver.find_element(By.CLASS_NAME, "css-1bnidmp")
+    seenButton = driver.find_element(By.XPATH, "/html/body/div/div/div[4]/div[1]/div/div/div/div[3]/button[1]")
     return seenButton
 
 def getNewWordButton():
-    newButton = driver.find_element(By.CLASS_NAME, "css-1bnidmp")
+    newButton = driver.find_element(By.XPATH, "/html/body/div/div/div[4]/div[1]/div/div/div/div[3]/button[2]")
     return newButton
 
 def clickStart():
